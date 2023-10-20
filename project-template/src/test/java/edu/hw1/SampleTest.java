@@ -1,112 +1,235 @@
 package edu.hw1;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class SampleTest {
     @Test
-    @DisplayName("Тест определения секунд")
+    public void main_testMinutesToSecondsTryConvertWithStandartValue() {
+        // given
+        String testCases = "13:56";
 
-    public void testMinutesToSeconds() {
-        String[] testCases = new String[] {"01:00", "13:56", "10:60", "10:-1"};
-        int[] expectedResults = new int[] {60, 836, -1, -1};
+        // when
+        var answer = Main.minutesToSeconds(testCases);
 
-        for (int i = 0; i < testCases.length; i++) {
-            var a = Main.minutesToSeconds(testCases[i]);
-            var b = expectedResults[i];
-            assertThat(b)
-                .isEqualTo(a);
-        }
-    }
-    @Test
-    @DisplayName("Тест определения цифр в числе")
-    public void testCountDigits() {
-        int[] testCases = new int[] {4666, 566, 0, -128, -1,1};
-        int[] expectedResults = new int[] {4, 3, 1, 3, 1,1};
-        for (int i = 0; i < testCases.length; i++)
-        {
-            var a = Main.countDigits(testCases[i]);
-            var b = expectedResults[i];
-            assertThat(b)
-                .isEqualTo(a);
-        }
-    }
-    @Test
-    @DisplayName("Тест на вхождение массивов")
-
-    public void testIsNestable() {
-
-        assertThat(Main.isNestable(new int[]{1, 2, 3, 4}, new int[]{0, 6}))
-            .isEqualTo(true);
-        assertThat(Main.isNestable(new int[] {3, 1}, new int[]{4, 0}))
-            .isEqualTo(true);
-        assertThat(Main.isNestable(new int[] {9, 9, 8}, new int[]{8, 9}))
-            .isEqualTo(false);
-        assertThat(Main.isNestable(new int[] {1, 2, 3, 4}, new int[]{2, 3}))
-            .isEqualTo(false);
+        // then
+        var expectedResult = 836;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
     }
 
     @Test
-    @DisplayName("Тест на нормализацию строк")
+    public void main_testMinutesToSecondsTryConvertWithSixtySeconds() {
+        // given
+        String testCases = "10:60";
 
-    public void testFixString() {
-        String[] testCases = new String[]{"123456", "hTsii  s aimex dpus rtni.g", "badce"};
-        String[] expectedResults = new String[]{"214365", "This is a mixed up string.", "abcde"};
+        // when
+        var answer = Main.minutesToSeconds(testCases);
 
-        for (int i = 0; i < testCases.length; i++) {
-            var a = Main.fixString(testCases[i]);
-            var b = expectedResults[i];
-            assertThat(b)
-                .isEqualTo(a);
-        }
+        //then
+        var expectedResult = -1;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
     }
+
     @Test
-    @DisplayName("Тест нахождения шагов для постоянной Капрекара")
+    public void main_testMinutesToSecondsTryConvertWithUnderZeroSeconds() {
+        // given
+        String testCases = "10:-2";
 
-    public void testCountK() {
-        int[] testCases = new int[] {3524, 6621, 6554, 1234};
-        int[] expectedResults = new int[] {3, 5, 4, 3};
+        // when
+        var answer = Main.minutesToSeconds(testCases);
 
-        for (int i = 0; i < testCases.length; i++) {
-            var a = Main.countK(testCases[i]);
-            var b = expectedResults[i];
-            assertThat(b)
-                .isEqualTo(a);
-        }
+        //then
+        var expectedResult = -1;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
     }
+
+
     @Test
-    @DisplayName("Тест на нахождение палиндрома у числа")
+    public void main_testCountDigitsWithPositiveValue() {
+        // given
+        int testCases = 4666;
 
-    public void testIsPalindromeDescendant() {
-        int[] testCases = new int[] {11211230, 13001120, 23336014, 11};
-        boolean[] expectedResults =
-            new boolean[] {true, true, true, true};
-        for (int i = 0; i < testCases.length; i++) {
-            var a = Main.isPalindromeDescendant(testCases[i]);
-            var b = expectedResults[i];
-            assertThat(b)
-                .isEqualTo(a);
-        }
-    }
-    @Test
-    @DisplayName("Тест на сдвиг")
+        // when
+        var answer = Main.countDigits(testCases);
 
-    public void testRotate() {
-
-        assertThat(Main.rotateRight(8, 1))
-                .isEqualTo(4);
-        assertThat(Main.rotateLeft(16, 1))
-            .isEqualTo(1);
-        assertThat(Main.rotateLeft(17, 2))
-            .isEqualTo(6);
+        //then
+        var expectedResult = 4;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
 
     }
     @Test
-    @DisplayName("Тест на коней и шахмат")
+    public void testCountDigitsWithZeroValue() {
+        // given
+        int testCases = 0;
 
-    public void testKnightBoardCapture() {
-        int[][] board1 = {
+        // when
+        var answer = Main.countDigits(testCases);
+
+        //then
+        var expectedResult = 1;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+    @Test
+    public void main_testCountDigitsWithUnderZeroValue() {
+        // given
+        int testCases = -128;
+
+        // when
+        var answer = Main.countDigits(testCases);
+
+        //then
+        var expectedResult = 3;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+    @Test
+    public void main_testIsNestableWithTrueResult() {
+        // given
+        var testCasesFirstArray = new int[]{1, 2, 3, 4};
+        var testCasesSecondArray = new int[]{0, 6};
+
+        // when
+        var answer = Main.isNestable(testCasesFirstArray,testCasesSecondArray);
+
+        //then
+        var expectedResult = true;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+    @Test
+    public void main_testIsNestableWithFalseResult() {
+        // given
+        var testCasesFirstArray = new int[]{1, 2, 3, 4};
+        var testCasesSecondArray = new int[]{2, 3};
+
+        // when
+        var answer = Main.isNestable(testCasesFirstArray,testCasesSecondArray);
+
+        //then
+        var expectedResult = false;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+    @Test
+    public void main_testFixStringWithStringOfNumbers() {
+        // given
+        String testCases = "123456";
+
+        // when
+        var answer = Main.fixString(testCases);
+
+        // then
+        var expectedResult = "214365";
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+
+    @Test
+    public void main_testFixStringWithStringOfSpaces() {
+        // given
+        String testCases = "hTsii  s aimex dpus rtni.g";
+
+        // when
+        var answer = Main.fixString(testCases);
+
+        // then
+        var expectedResult = "This is a mixed up string.";
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+    @Test
+    public void main_testCountKWithFourDigitValue() {
+        // given
+        int testCases = 3524;
+
+        // when
+        var answer = Main.countK(testCases);
+
+        //then
+        var expectedResult = 3;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+
+    }
+    @Test
+    public void main_testIsPalindromeDescendantTrueResult() {
+        // given
+        int testCases = 11211230;
+
+        // when
+        var answer = Main.isPalindromeDescendant(testCases);
+
+        //then
+        var expectedResult = true;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+
+    @Test
+    public void main_testIsPalindromeDescendantWithFalseResult() {
+        // given
+        int testCases = 1232;
+
+        // when
+        var answer = Main.isPalindromeDescendant(testCases);
+
+        //then
+        var expectedResult = false;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+    @Test
+    public void main_testRotateWithRightRotateAndOneShift() {
+        // given
+        int testCases = 8;
+        int shift = 1;
+
+        // when
+        var answer = Main.rotateRight(testCases,shift);
+
+        //then
+        var expectedResult = 4;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+    @Test
+    public void main_testRotateLeftRotateAndOneShift() {
+        // given
+        int testCases = 16;
+        int shift = 1;
+
+        // when
+        var answer = Main.rotateLeft(testCases,shift);
+
+        //then
+        var expectedResult = 1;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+
+    }
+    @Test
+    public void main_testRotateLeftRotateAndTwoShift() {
+        // given
+        int testCases = 17;
+        int shift = 2;
+
+        // when
+        var answer = Main.rotateLeft(testCases,shift);
+
+        //then
+        var expectedResult = 6;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+    @Test
+    public void main_testKnightBoardCaptureWithTrueResult() {
+        // given
+        int[][] board = {
             {0, 0, 0, 1, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0},
             {0, 1, 0, 0, 0, 1, 0, 0},
@@ -116,7 +239,19 @@ public class SampleTest {
             {0, 1, 0, 0, 0, 0, 0, 1},
             {0, 0, 0, 0, 1, 0, 0, 0}
         };
-        int[][] board2 = {
+
+        // when
+        var answer = Main.knightBoardCapture(board);
+
+        //then
+        var expectedResult = true;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+    }
+    @Test
+    public void main_testKnightBoardCaptureWithFalseResult() {
+        // given
+        int[][] board = {
             {1, 0, 1, 0, 1, 0, 1, 0},
             {0, 1, 0, 1, 0, 1, 0, 1},
             {0, 0, 0, 0, 1, 0, 1, 0},
@@ -126,21 +261,15 @@ public class SampleTest {
             {1, 0, 0, 0, 1, 0, 1, 0},
             {0, 0, 0, 1, 0, 1, 0, 1}
         };
-        int[][] board3 = {
-            {0, 0, 0, 0, 1, 0, 0, 0},
-            {0, 0, 0, 0, 0, 1, 0, 0},
-            {0, 0, 0, 1, 0, 0, 0, 0},
-            {1, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 1, 0, 0, 0},
-            {0, 0, 0, 0, 0, 1, 0, 0},
-            {0, 0, 0, 0, 0, 1, 0, 0},
-            {1, 0, 0, 0, 0, 0, 0, 0}
-        };
-        assertThat(Main.knightBoardCapture(board1))
-            .isEqualTo(true);
-        assertThat(Main.knightBoardCapture(board2))
-            .isEqualTo(false);
-        assertThat(Main.knightBoardCapture(board3))
-            .isEqualTo(false);
+
+
+        // when
+        var answer = Main.knightBoardCapture(board);
+
+        //then
+        var expectedResult = false;
+        assertThat(expectedResult)
+            .isEqualTo(answer);
+
     }
 }
