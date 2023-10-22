@@ -7,9 +7,10 @@ public class FaultyConnection implements Connection {
     private final Logger faultyConnectionLogger = Logger.getLogger("FAULTY_CONNECTION");
 
     @Override
+    @SuppressWarnings("MagicNumber")
     public void execute(String command) {
         open();
-        if (Math.random()>0.5) {
+        if (Math.random() > 0.5) {
             close();
             throw new ConnectionException("Faulty Connection Error");
         } else {
