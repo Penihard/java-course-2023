@@ -5,12 +5,12 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class SampleTest {
     @Test
-    public void main_testMinutesToSecondsTryConvertWithStandartValue() {
+    public void minutesToSecondsClass_testMinutesToSecondsTryConvertWithStandartValue() {
         // given
         String testCases = "13:56";
 
         // when
-        var answer = Main.minutesToSeconds(testCases);
+        var answer = MinutesToSecondsClass.minutesToSeconds(testCases);
 
         // then
         var expectedResult = 836;
@@ -19,12 +19,12 @@ public class SampleTest {
     }
 
     @Test
-    public void main_testMinutesToSecondsTryConvertWithSixtySeconds() {
+    public void minutesToSecondsClass_testMinutesToSecondsTryConvertWithSixtySeconds() {
         // given
         String testCases = "10:60";
 
         // when
-        var answer = Main.minutesToSeconds(testCases);
+        var answer = MinutesToSecondsClass.minutesToSeconds(testCases);
 
         //then
         var expectedResult = -1;
@@ -33,12 +33,12 @@ public class SampleTest {
     }
 
     @Test
-    public void main_testMinutesToSecondsTryConvertWithUnderZeroSeconds() {
+    public void minutesToSecondsClass_testMinutesToSecondsTryConvertWithUnderZeroSeconds() {
         // given
         String testCases = "10:-2";
 
         // when
-        var answer = Main.minutesToSeconds(testCases);
+        var answer = MinutesToSecondsClass.minutesToSeconds(testCases);
 
         //then
         var expectedResult = -1;
@@ -48,12 +48,12 @@ public class SampleTest {
 
 
     @Test
-    public void main_testCountDigitsWithPositiveValue() {
+    public void digitsFunctionsClass_testCountDigitsWithPositiveValue() {
         // given
         int testCases = 4666;
 
         // when
-        var answer = Main.countDigits(testCases);
+        var answer = DigitsFunctionsClass.countDigits(testCases);
 
         //then
         var expectedResult = 4;
@@ -62,12 +62,12 @@ public class SampleTest {
 
     }
     @Test
-    public void testCountDigitsWithZeroValue() {
+    public void digitsFunctionsClass_testCountDigitsWithZeroValue() {
         // given
         int testCases = 0;
 
         // when
-        var answer = Main.countDigits(testCases);
+        var answer = DigitsFunctionsClass.countDigits(testCases);
 
         //then
         var expectedResult = 1;
@@ -75,12 +75,12 @@ public class SampleTest {
             .isEqualTo(answer);
     }
     @Test
-    public void main_testCountDigitsWithUnderZeroValue() {
+    public void digitsFunctionsClass_testCountDigitsWithUnderZeroValue() {
         // given
         int testCases = -128;
 
         // when
-        var answer = Main.countDigits(testCases);
+        var answer = DigitsFunctionsClass.countDigits(testCases);
 
         //then
         var expectedResult = 3;
@@ -88,13 +88,13 @@ public class SampleTest {
             .isEqualTo(answer);
     }
     @Test
-    public void main_testIsNestableWithTrueResult() {
+    public void arrayFunctionsClass_testIsNestableWithTrueResult() {
         // given
         var testCasesFirstArray = new int[]{1, 2, 3, 4};
         var testCasesSecondArray = new int[]{0, 6};
 
         // when
-        var answer = Main.isNestable(testCasesFirstArray,testCasesSecondArray);
+        var answer = ArrayFunctionsClass.isNestable(testCasesFirstArray,testCasesSecondArray);
 
         //then
         var expectedResult = true;
@@ -102,13 +102,13 @@ public class SampleTest {
             .isEqualTo(answer);
     }
     @Test
-    public void main_testIsNestableWithFalseResult() {
+    public void arrayFunctionsClass_testIsNestableWithFalseResult() {
         // given
         var testCasesFirstArray = new int[]{1, 2, 3, 4};
         var testCasesSecondArray = new int[]{2, 3};
 
         // when
-        var answer = Main.isNestable(testCasesFirstArray,testCasesSecondArray);
+        var answer = ArrayFunctionsClass.isNestable(testCasesFirstArray,testCasesSecondArray);
 
         //then
         var expectedResult = false;
@@ -116,12 +116,12 @@ public class SampleTest {
             .isEqualTo(answer);
     }
     @Test
-    public void main_testFixStringWithStringOfNumbers() {
+    public void stringFunctionsClass_testFixStringWithStringOfNumbers() {
         // given
         String testCases = "123456";
 
         // when
-        var answer = Main.fixString(testCases);
+        var answer = StringFunctionsClass.fixString(testCases);
 
         // then
         var expectedResult = "214365";
@@ -130,12 +130,12 @@ public class SampleTest {
     }
 
     @Test
-    public void main_testFixStringWithStringOfSpaces() {
+    public void stringFunctionsClass_testFixStringWithStringOfSpaces() {
         // given
         String testCases = "hTsii  s aimex dpus rtni.g";
 
         // when
-        var answer = Main.fixString(testCases);
+        var answer = StringFunctionsClass.fixString(testCases);
 
         // then
         var expectedResult = "This is a mixed up string.";
@@ -143,12 +143,12 @@ public class SampleTest {
             .isEqualTo(answer);
     }
     @Test
-    public void main_testCountKWithFourDigitValue() {
+    public void digitsFunctionsClass_testCountKWithFourDigitValue() {
         // given
         int testCases = 3524;
 
         // when
-        var answer = Main.countK(testCases);
+        var answer = DigitsFunctionsClass.countK(testCases);
 
         //then
         var expectedResult = 3;
@@ -157,12 +157,12 @@ public class SampleTest {
 
     }
     @Test
-    public void main_testIsPalindromeDescendantTrueResult() {
+    public void stringFunctionsClass_testIsPalindromeDescendantTrueResult() {
         // given
         int testCases = 11211230;
 
         // when
-        var answer = Main.isPalindromeDescendant(testCases);
+        var answer = StringFunctionsClass.isPalindromeDescendant(testCases);
 
         //then
         var expectedResult = true;
@@ -171,12 +171,12 @@ public class SampleTest {
     }
 
     @Test
-    public void main_testIsPalindromeDescendantWithFalseResult() {
+    public void stringFunctionsClass_testIsPalindromeDescendantWithFalseResult() {
         // given
         int testCases = 1232;
 
         // when
-        var answer = Main.isPalindromeDescendant(testCases);
+        var answer = StringFunctionsClass.isPalindromeDescendant(testCases);
 
         //then
         var expectedResult = false;
@@ -184,13 +184,13 @@ public class SampleTest {
             .isEqualTo(answer);
     }
     @Test
-    public void main_testRotateWithRightRotateAndOneShift() {
+    public void digitsFunctionsClass_testRotateWithRightRotateAndOneShift() {
         // given
         int testCases = 8;
         int shift = 1;
 
         // when
-        var answer = Main.rotateRight(testCases,shift);
+        var answer = DigitsFunctionsClass.rotateRight(testCases,shift);
 
         //then
         var expectedResult = 4;
@@ -198,13 +198,13 @@ public class SampleTest {
             .isEqualTo(answer);
     }
     @Test
-    public void main_testRotateLeftRotateAndOneShift() {
+    public void digitsFunctionsClass_testRotateLeftRotateAndOneShift() {
         // given
         int testCases = 16;
         int shift = 1;
 
         // when
-        var answer = Main.rotateLeft(testCases,shift);
+        var answer = DigitsFunctionsClass.rotateLeft(testCases,shift);
 
         //then
         var expectedResult = 1;
@@ -213,13 +213,13 @@ public class SampleTest {
 
     }
     @Test
-    public void main_testRotateLeftRotateAndTwoShift() {
+    public void digitsFunctionsClass_testRotateLeftRotateAndTwoShift() {
         // given
         int testCases = 17;
         int shift = 2;
 
         // when
-        var answer = Main.rotateLeft(testCases,shift);
+        var answer = DigitsFunctionsClass.rotateLeft(testCases,shift);
 
         //then
         var expectedResult = 6;
@@ -227,7 +227,7 @@ public class SampleTest {
             .isEqualTo(answer);
     }
     @Test
-    public void main_testKnightBoardCaptureWithTrueResult() {
+    public void arrayFunctionsClass_testKnightBoardCaptureWithTrueResult() {
         // given
         int[][] board = {
             {0, 0, 0, 1, 0, 0, 0, 0},
@@ -241,7 +241,7 @@ public class SampleTest {
         };
 
         // when
-        var answer = Main.knightBoardCapture(board);
+        var answer = ArrayFunctionsClass.knightBoardCapture(board);
 
         //then
         var expectedResult = true;
@@ -249,7 +249,7 @@ public class SampleTest {
             .isEqualTo(answer);
     }
     @Test
-    public void main_testKnightBoardCaptureWithFalseResult() {
+    public void arrayFunctionsClass_testKnightBoardCaptureWithFalseResult() {
         // given
         int[][] board = {
             {1, 0, 1, 0, 1, 0, 1, 0},
@@ -264,7 +264,7 @@ public class SampleTest {
 
 
         // when
-        var answer = Main.knightBoardCapture(board);
+        var answer = ArrayFunctionsClass.knightBoardCapture(board);
 
         //then
         var expectedResult = false;
