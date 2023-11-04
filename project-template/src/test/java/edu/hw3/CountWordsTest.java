@@ -20,7 +20,7 @@ public class CountWordsTest {
 
         // then
         testCaseOne.put("bb", 2);
-        testCaseOne.put("a", 2);;
+        testCaseOne.put("a", 2);
 
         assertThat(testCaseOne)
             .isEqualTo(answer);
